@@ -33,6 +33,7 @@ def main():
             ana_namelist.append(name)
             ga = GA(opt, name, tar)
             ga.run()
+        break #测试的话跑一张图就行
 
 # 一些结果可视化
     for name in ana_namelist:
