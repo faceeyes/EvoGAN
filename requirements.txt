@@ -1,0 +1,10 @@
+tqdm
+numpy
+cmake
+boost
+pillow
+matplotlib
+scikit-image
+torch
+torchvision
+opencv-python
