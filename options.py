@@ -58,8 +58,7 @@ class Options(object):
         parser.add_argument('--no_aus_noise', action='store_true', help='if specified, add noise to target AUs.')
 
         parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids, eg. 0,1,2; -1 for cpu.')
-        parser.add_argument('--ckpt_dir', type=str, default='GAN/GANckpts/emotionNet/ganimation/190327_160828/', help='directory to save check points.')
-        #parser.add_argument('--ckpt_dir', type=str, default='GAN/GANckpts/celebA/ganimation/190327_161852/',help='directory to save check points.')
+        parser.add_argument('--ckpt_dir', type=str, default='GAN/GANckpts/', help='directory to save check points.')
         parser.add_argument('--load_epoch', type=int, default=30, help='load epoch; 0: do not load')
         parser.add_argument('--log_file', type=str, default="logs.txt", help='log loss')
         parser.add_argument('--opt_file', type=str, default="opt.txt", help='options file')
@@ -141,25 +140,6 @@ class Options(object):
             torch.backends.cudnn.benchmark = False
             torch.cuda.manual_seed(opt.lucky_seed)
             torch.cuda.manual_seed_all(opt.lucky_seed)
-            
-        # write command to file
-        script_dir = opt.ckpt_dir 
-        with open(os.path.join(os.path.join(script_dir, "run_script.sh")), 'a+') as f:
-            f.write("[%5s][%s]python %s\n" % (opt.mode, opt.name, ' '.join(sys.argv)))
-
-        # print and write options file
-        msg = ''
-        msg += '------------------- [%5s][%s]Options --------------------\n' % (opt.mode, opt.name)
-        for k, v in sorted(vars(opt).items()):
-            comment = ''
-            default_v = parser.get_default(k)
-            if v != default_v:
-                comment = '\t[default: %s]' % str(default_v)
-            msg += '{:>25}: {:<30}{}\n'.format(str(k), str(v), comment)
-        msg += '--------------------- [%5s][%s]End ----------------------\n' % (opt.mode, opt.name)
-        # print(msg)
-        with open(os.path.join(os.path.join(script_dir, "opt.txt")), 'a+') as f:
-            f.write(msg + '\n\n')
 
         return opt
 
