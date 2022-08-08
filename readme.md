@@ -1,5 +1,6 @@
 # Official implementation of EvoGAN
-
+## paper
+https://www.sciencedirect.com/science/article/abs/pii/S0925231221015460
 
 ## ckpts 
 https://pan.baidu.com/s/1l8kkd-U-czIGuqxBr8raKA?pwd=j5aa 提取码: j5aa
